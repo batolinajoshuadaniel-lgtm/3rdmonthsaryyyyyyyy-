@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Happy 3rd Monthsary ❤️
+</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<style>
+
+:root{
+
+--pink:#ff5c8d;
+--pink-dark:#c2185b;
+
+--shadow:
+0 10px 25px rgba(0,0,0,.15);
+
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+html,
+body{
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+font-family:
+'Poppins',
+sans-serif;
+
+background:#ffe4ec;
+
+}
+
+/* =========================
+PAGE SYSTEM
+========================= */
+
+.page{
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+display:none;
+
+overflow:hidden;
+
+}
+
+.page.active{
+
+display:block;
+
+animation:
+pageEnter .8s ease;
+
+}
+
+@keyframes pageEnter{
+
+from{
+
+opacity:0;
+
+transform:
+translateX(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateX(0);
+
+}
+
+}
+
+.page-bg{
+
+position:absolute;
+
+inset:0;
+
+background-size:cover;
+background-position:center;
+
+opacity:1;
+
+filter:blur(0px);
+
+z-index:0;
+
+}
+
+.page-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:
+rgba(255,255,255,.35);
+
+z-index:1;
+
+}
+
+.page-content{
+
+position:relative;
+
+z-index:2;
+
+height:100%;
+
+overflow-y:auto;
+
+padding:20px;
+
+}
+
+/* =========================
+TITLES
+========================= */
+
+.page-title{
+
+font-family:
+'Caveat',
+cursive;
+
+font-size:3.5rem;
+
+text-align:center;
+
+margin-bottom:25px;
+
+color:
+var(--pink-dark);
+
+}
+
+/* =========================
+SCRAPBOOK GRID
+========================= */
+
+.scrapbook-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:15px;
+
+}
+
+.photo-slot{
+
+height:220px;
+
+background:white;
+
+border-radius:18px;
+
+overflow:hidden;
+
+position:relative;
+
+box-shadow:
+var(--shadow);
+
+transition:.3s;
+
+transform:
+rotate(-2deg);
+
+cursor:pointer;
+
+}
+
+.photo-slot:nth-child(even){
+
+transform:
+rotate(2deg);
+
+}
+
+.photo-slot:hover{
+
+transform:
+scale(1.03);
+
+}
+
+.photo-slot img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+}
+
+.photo-controls{
+
+position:absolute;
+
+left:8px;
+bottom:8px;
+
+display:flex;
+
+gap:5px;
+
+}
+
+.photo-controls button{
+
+border:none;
+
+padding:6px 10px;
+
+border-radius:8px;
+
+background:
+var(--pink);
+
+color:white;
+
+font-size:12px;
+
+cursor:pointer;
+
+}
+
+/* =========================
+TEXT PAGES
+========================= */
+
+textarea{
+
+width:100%;
+
+height:70vh;
+
+padding:20px;
+
+font-size:16px;
+
+resize:none;
+
+border:none;
+
+border-radius:15px;
+
+background:
+rgba(255,255,255,.92);
+
+box-shadow:
+var(--shadow);
+
+}
+
+/* =========================
+ACTION BUTTONS
+========================= */
+
+.action-bar{
+
+position:fixed;
+
+right:20px;
+bottom:20px;
+
+display:flex;
+
+gap:10px;
+
+align-items:center;
+
+z-index:9999;
+
+}
+
+.action-btn{
+
+width:55px;
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:var(--pink);
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+box-shadow:
+var(--shadow);
+
+transition:.3s;
+
+}
+
+.action-btn:hover{
+
+transform:scale(1.08);
+
+}
+
+/* Export stays after finalize */
+
+.export-alone{
+
+position:fixed;
+
+right:20px;
+bottom:20px;
+
+z-index:9999;
+
+}
+
+/* =========================
+NAVIGATION
+========================= */
+
+.nav-btn{
+
+position:fixed;
+
+top:20px;
+
+width:55px;
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:var(--pink);
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+z-index:9999;
+
+box-shadow:
+var(--shadow);
+
+}
+
+.prev-btn{
+
+left:15px;
+
+}
+
+.next-btn{
+
+right:15px;
+
+}
+
+/* AFTER FINALIZE */
+
+.viewer-prev{
+
+top:auto !important;
+
+bottom:20px !important;
+
+left:20px !important;
+
+}
+
+.viewer-next{
+
+top:auto !important;
+
+bottom:20px !important;
+
+right:90px !important;
+
+}
+
+/* =========================
+EDITOR
+========================= */
+
+.editor-toggle{
+
+position:fixed;
+
+left:15px;
+bottom:20px;
+
+width:55px;
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:var(--pink);
+
+color:white;
+
+font-size:24px;
+
+cursor:pointer;
+
+z-index:9999;
+
+}
+
+.editor-panel{
+
+position:fixed;
+
+left:15px;
+bottom:85px;
+
+width:240px;
+
+background:white;
+
+padding:15px;
+
+border-radius:15px;
+
+box-shadow:
+var(--shadow);
+
+transition:.3s;
+
+z-index:9999;
+
+max-height:75vh;
+
+overflow:auto;
+
+}
+
+.editor-panel.hidden{
+
+transform:
+translateY(130%);
+
+}
+
+.editor-panel button{
+
+width:100%;
+
+padding:10px;
+
+margin-top:6px;
+
+border:none;
+
+border-radius:10px;
+
+background:var(--pink);
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.editor-panel label{
+
+display:block;
+
+margin-top:10px;
+
+}
+
+.editor-panel input[type=range]{
+
+width:100%;
+
+}
+
+/* =========================
+TIMELINE PAGE
+========================= */
+
+.timeline-container{
+
+height:100%;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+flex-direction:column;
+
+background:
+linear-gradient(
+135deg,
+#ffd6e5,
+#fff7fa
+);
+
+}
+
+.timeline-title{
+
+font-family:
+'Caveat',
+cursive;
+
+font-size:4rem;
+
+color:
+var(--pink-dark);
+
+margin-bottom:30px;
+
+text-align:center;
+
+}
+
+.timeline{
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+text-align:center;
+
+font-size:1.15rem;
+
+}
+
+.timeline-item{
+
+opacity:0;
+
+transform:
+translateY(20px);
+
+animation:
+appear .8s forwards;
+
+}
+
+.timeline-item:nth-child(1){animation-delay:.3s;}
+.timeline-item:nth-child(2){animation-delay:.8s;}
+.timeline-item:nth-child(3){animation-delay:1.3s;}
+.timeline-item:nth-child(4){animation-delay:1.8s;}
+.timeline-item:nth-child(5){animation-delay:2.3s;}
+.timeline-item:nth-child(6){animation-delay:2.8s;}
+
+@keyframes appear{
+
+to{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+}
+
+.start-btn{
+
+margin-top:30px;
+
+padding:15px 30px;
+
+border:none;
+
+border-radius:15px;
+
+background:var(--pink);
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+/* =========================
+FLOATING HEARTS
+========================= */
+
+.heart{
+
+position:absolute;
+
+opacity:.6;
+
+animation:
+floatHeart 10s linear;
+
+}
+
+@keyframes floatHeart{
+
+from{
+
+transform:
+translateY(100vh);
+
+}
+
+to{
+
+transform:
+translateY(-150px);
+
+}
+
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.scrapbook-grid{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+.page-title{
+
+font-size:2.8rem;
+
+}
+
+.timeline-title{
+
+font-size:3rem;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.scrapbook-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.photo-slot{
+
+height:240px;
+
+transform:none !important;
+
+}
+
+.page-title{
+
+font-size:2.2rem;
+
+}
+
+.timeline-title{
+
+font-size:2.4rem;
+
+}
+
+.editor-panel{
+
+width:200px;
+
+}
+
+.action-bar{
+
+right:10px;
+bottom:10px;
+
+gap:6px;
+
+}
+
+.action-btn{
+
+width:50px;
+height:50px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ACTION BUTTONS -->
+
+<div
+class="action-bar"
+id="actionBar">
+
+<button
+class="action-btn"
+id="saveBtn"
+title="Save">
+💾
+</button>
+
+<button
+class="action-btn"
+id="lockBtn"
+title="Finalize">
+🔒
+</button>
+
+<button
+class="action-btn"
+id="exportBtn"
+title="Export">
+📤
+</button>
+
+<button
+class="action-btn"
+id="importBtn"
+title="Import">
+📥
+</button>
+
+</div>
+
+<input
+type="file"
+id="importFile"
+accept=".json"
+hidden>
+
+<!-- NAVIGATION -->
+
+<button
+class="nav-btn prev-btn"
+id="prevBtn">
+❮
+</button>
+
+<button
+class="nav-btn next-btn"
+id="nextBtn">
+❯
+</button>
+
+<!-- EDITOR TOGGLE -->
+
+<button
+class="editor-toggle"
+id="editorToggle">
+⚙️
+</button>
+
+<!-- EDITOR PANEL -->
+
+<div
+class="editor-panel hidden"
+id="editorPanel">
+
+<h3>
+Scrapbook Editor
+</h3>
+
+<label>
+
+<input
+type="checkbox"
+id="editMode"
+checked>
+
+Edit Mode
+
+</label>
+
+<button id="uploadBgBtn">
+📷 Upload Background
+</button>
+
+<button id="removeBgBtn">
+🗑 Remove Background
+</button>
+
+<label>
+Background Transparency
+</label>
+
+<input
+type="range"
+id="opacitySlider"
+min="0"
+max="100"
+value="100">
+
+<label>
+Background Blur
+</label>
+
+<input
+type="range"
+id="blurSlider"
+min="0"
+max="20"
+value="0">
+
+</div>
+
+<input
+type="file"
+id="bgInput"
+accept="image/*"
+hidden>
+
+<input
+type="file"
+id="photoInput"
+accept="image/*"
+hidden>
+
+<!-- PAGE 0 -->
+
+<div
+class="page active"
+id="timelinePage">
+
+<div
+class="timeline-container">
+
+<h1 class="timeline-title">
+Our Journey So Far ❤️
+</h1>
+
+<div class="timeline">
+
+<div class="timeline-item">
+Day We Met ❤️
+</div>
+
+<div class="timeline-item">
+First Conversation 💬
+</div>
+
+<div class="timeline-item">
+First Date 🌸
+</div>
+
+<div class="timeline-item">
+1st Monthsary 💕
+</div>
+
+<div class="timeline-item">
+2nd Monthsary 💖
+</div>
+
+<div class="timeline-item">
+3rd Monthsary ❤️
+</div>
+
+</div>
+
+<button
+class="start-btn"
+id="startBookBtn">
+
+Begin Our Scrapbook ❤️
+
+</button>
+
+</div>
+
+</div>
+<!-- PAGE 1 : WELCOME -->
+
+<div class="page" id="page1">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<h1 class="page-title">
+Happy 3rd Monthsary ❤️
+</h1>
+
+<div style="
+max-width:850px;
+margin:auto;
+background:rgba(255,255,255,.92);
+padding:30px;
+border-radius:20px;
+box-shadow:var(--shadow);
+text-align:center;
+line-height:2;
+font-size:18px;
+">
+
+Every memory with you became a chapter
+worth keeping forever.
+
+This scrapbook is our little time capsule,
+filled with moments, adventures,
+pictures, and messages that remind me
+how special these three months have been.
+
+❤️ Thank you for being my favorite person.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div class="page" id="page2">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<h1 class="page-title">
+Favorite Memories 📸
+</h1>
+
+<div class="scrapbook-grid">
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div class="page" id="page3">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<h1 class="page-title">
+Our Adventures ✨
+</h1>
+
+<div class="scrapbook-grid">
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PAGE 4 -->
+
+<div class="page" id="page4">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<h1 class="page-title">
+💌 A Letter For You
+</h1>
+
+<textarea
+id="letterPage"
+placeholder="Write your heartfelt monthsary letter here...">
+</textarea>
+
+</div>
+
+</div>
+
+<!-- PAGE 5 -->
+
+<div class="page" id="page5">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<h1 class="page-title">
+Photo Wall ❤️
+</h1>
+
+<div class="scrapbook-grid">
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PAGE 6 -->
+
+<div class="page" id="page6">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<h1 class="page-title">
+❤️ Reasons I Love You
+</h1>
+
+<textarea
+id="reasonsPage"
+placeholder="Write all the reasons why you love them...">
+</textarea>
+
+</div>
+
+</div>
+
+<!-- PAGE 7 -->
+
+<div class="page" id="page7">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<h1 class="page-title">
+Special Moments 🌸
+</h1>
+
+<div class="scrapbook-grid">
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+<div class="photo-slot"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PAGE 8 -->
+
+<div class="page" id="page8">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<h1 class="page-title">
+✨ Our Future Together
+</h1>
+
+<textarea
+id="futurePlans"
+placeholder="Write your dreams, goals and plans together...">
+</textarea>
+
+</div>
+
+</div>
+
+<!-- PAGE 9 -->
+
+<div class="page" id="page9">
+
+<div class="page-bg"></div>
+<div class="page-overlay"></div>
+
+<div class="page-content">
+
+<div style="
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+">
+
+<h1 style="
+font-family:'Caveat',cursive;
+font-size:5rem;
+color:#c2185b;
+margin-bottom:25px;
+">
+
+Happy 3rd Monthsary ❤️
+
+</h1>
+
+<div style="
+max-width:850px;
+background:rgba(255,255,255,.92);
+padding:30px;
+border-radius:20px;
+box-shadow:var(--shadow);
+line-height:2;
+font-size:18px;
+">
+
+Three months may seem short,
+but every moment with you has become
+one of the most meaningful parts of my life.
+
+Thank you for all the memories,
+all the laughter,
+and all the love we've shared.
+
+Here's to more adventures,
+more milestones,
+and many more monthsaries together.
+
+❤️ Forever Us ❤️
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =====================================
+   GLOBAL VARIABLES
+===================================== */
+
+const pages =
+document.querySelectorAll(".page");
+
+let currentPage = 0;
+
+let selectedPhoto = null;
+
+let scrapbookLocked = false;
+
+const pageSettings = {};
+
+pages.forEach((page,index)=>{
+
+pageSettings[index] = {
+
+background:null,
+opacity:1,
+blur:0
+
+};
+
+});
+
+/* =====================================
+   START SCRAPBOOK
+===================================== */
+
+document
+.getElementById(
+"startBookBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+showPage(1);
+
+}
+);
+
+/* =====================================
+   PAGE NAVIGATION
+===================================== */
+
+function showPage(index){
+
+pages.forEach(page=>{
+
+page.classList.remove(
+"active"
+);
+
+});
+
+pages[index]
+.classList.add(
+"active"
+);
+
+currentPage = index;
+
+loadBackground();
+
+updateEditor();
+
+updateNavButtons();
+
+}
+
+function nextPage(){
+
+if(
+currentPage <
+pages.length - 1
+){
+
+showPage(
+currentPage + 1
+);
+
+}
+
+}
+
+function prevPage(){
+
+if(
+currentPage > 0
+){
+
+showPage(
+currentPage - 1
+);
+
+}
+
+}
+
+document
+.getElementById(
+"nextBtn"
+)
+.addEventListener(
+"click",
+nextPage
+);
+
+document
+.getElementById(
+"prevBtn"
+)
+.addEventListener(
+"click",
+prevPage
+);
+
+/* =====================================
+   NAVIGATION VISIBILITY
+===================================== */
+
+function updateNavButtons(){
+
+document
+.getElementById(
+"prevBtn"
+)
+.style.display =
+
+currentPage === 0
+? "none"
+: "block";
+
+document
+.getElementById(
+"nextBtn"
+)
+.style.display =
+
+currentPage ===
+pages.length - 1
+? "none"
+: "block";
+
+}
+
+/* =====================================
+   MOBILE SWIPE
+===================================== */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener(
+"touchstart",
+e=>{
+
+touchStartX =
+e.changedTouches[0]
+.clientX;
+
+}
+);
+
+document.addEventListener(
+"touchend",
+e=>{
+
+touchEndX =
+e.changedTouches[0]
+.clientX;
+
+handleSwipe();
+
+}
+);
+
+function handleSwipe(){
+
+if(
+touchStartX -
+touchEndX > 70
+){
+
+nextPage();
+
+}
+
+if(
+touchEndX -
+touchStartX > 70
+){
+
+prevPage();
+
+}
+
+}
+
+/* =====================================
+   COLLAPSIBLE EDITOR
+===================================== */
+
+const editorPanel =
+document.getElementById(
+"editorPanel"
+);
+
+const editorToggle =
+document.getElementById(
+"editorToggle"
+);
+
+editorToggle
+.addEventListener(
+"click",
+()=>{
+
+editorPanel.classList.toggle(
+"hidden"
+);
+
+}
+);
+
+/* =====================================
+   IMAGE COMPRESSION
+===================================== */
+
+function compressImage(
+file,
+callback
+){
+
+const reader =
+new FileReader();
+
+reader.onload =
+function(e){
+
+const img =
+new Image();
+
+img.src =
+e.target.result;
+
+img.onload =
+function(){
+
+const canvas =
+document.createElement(
+"canvas"
+);
+
+const ctx =
+canvas.getContext(
+"2d"
+);
+
+let width =
+img.width;
+
+let height =
+img.height;
+
+const maxWidth =
+1200;
+
+if(
+width > maxWidth
+){
+
+height =
+height *
+(maxWidth / width);
+
+width =
+maxWidth;
+
+}
+
+canvas.width =
+width;
+
+canvas.height =
+height;
+
+ctx.drawImage(
+img,
+0,
+0,
+width,
+height
+);
+
+callback(
+
+canvas.toDataURL(
+"image/jpeg",
+0.82
+)
+
+);
+
+};
+
+};
+
+reader.readAsDataURL(
+file
+);
+
+}
+
+/* =====================================
+   PHOTO SLOT CLICK
+===================================== */
+
+document
+.querySelectorAll(
+".photo-slot"
+)
+.forEach(slot=>{
+
+slot.addEventListener(
+"click",
+()=>{
+
+if(scrapbookLocked)
+return;
+
+if(
+!document
+.getElementById(
+"editMode"
+)
+.checked
+)
+return;
+
+selectedPhoto =
+slot;
+
+document
+.getElementById(
+"photoInput"
+)
+.click();
+
+});
+
+});
+
+/* =====================================
+   PHOTO UPLOAD
+===================================== */
+
+document
+.getElementById(
+"photoInput"
+)
+.addEventListener(
+"change",
+function(e){
+
+const file =
+e.target.files[0];
+
+if(
+!file ||
+!selectedPhoto
+)
+return;
+
+compressImage(
+file,
+compressed=>{
+
+selectedPhoto.innerHTML=
+`
+<img src="${compressed}">
+
+<div class="photo-controls">
+
+<button onclick="replacePhoto(this)">
+Replace
+</button>
+
+<button onclick="removePhoto(this)">
+Delete
+</button>
+
+</div>
+`;
+
+saveAll();
+
+}
+);
+
+}
+);
+
+/* =====================================
+   REPLACE PHOTO
+===================================== */
+
+function replacePhoto(btn){
+
+if(scrapbookLocked)
+return;
+
+selectedPhoto =
+btn.closest(
+".photo-slot"
+);
+
+document
+.getElementById(
+"photoInput"
+)
+.click();
+
+}
+
+/* =====================================
+   DELETE PHOTO
+===================================== */
+
+function removePhoto(btn){
+
+if(scrapbookLocked)
+return;
+
+btn
+.closest(
+".photo-slot"
+)
+.innerHTML = "";
+
+saveAll();
+
+}
+
+/* =====================================
+   BACKGROUND IMAGE UPLOAD
+===================================== */
+
+const bgInput =
+document.getElementById(
+"bgInput"
+);
+
+document
+.getElementById(
+"uploadBgBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+if(scrapbookLocked)
+return;
+
+bgInput.click();
+
+}
+);
+
+bgInput
+.addEventListener(
+"change",
+e=>{
+
+const file =
+e.target.files[0];
+
+if(!file)
+return;
+
+compressImage(
+file,
+compressed=>{
+
+pageSettings[
+currentPage
+].background =
+compressed;
+
+loadBackground();
+
+saveAll();
+
+}
+);
+
+}
+);
+
+/* =====================================
+   REMOVE BACKGROUND
+===================================== */
+
+document
+.getElementById(
+"removeBgBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+pageSettings[
+currentPage
+].background =
+null;
+
+loadBackground();
+
+saveAll();
+
+}
+);
+
+/* =====================================
+   TRANSPARENCY CONTROL
+===================================== */
+
+document
+.getElementById(
+"opacitySlider"
+)
+.addEventListener(
+"input",
+function(){
+
+pageSettings[
+currentPage
+].opacity =
+this.value / 100;
+
+loadBackground();
+
+saveAll();
+
+}
+);
+
+/* =====================================
+   BLUR CONTROL
+===================================== */
+
+document
+.getElementById(
+"blurSlider"
+)
+.addEventListener(
+"input",
+function(){
+
+pageSettings[
+currentPage
+].blur =
+this.value;
+
+loadBackground();
+
+saveAll();
+
+}
+);
+
+/* =====================================
+   APPLY PAGE BACKGROUND
+===================================== */
+
+function loadBackground(){
+
+const page =
+pages[currentPage];
+
+const bg =
+page.querySelector(
+".page-bg"
+);
+
+if(!bg)
+return;
+
+const settings =
+pageSettings[
+currentPage
+];
+
+if(
+settings.background
+){
+
+bg.style.backgroundImage =
+`url('${settings.background}')`;
+
+bg.style.opacity =
+settings.opacity;
+
+bg.style.filter =
+`blur(${settings.blur}px)`;
+
+}
+else{
+
+bg.style.backgroundImage =
+"none";
+
+}
+
+}
+
+/* =====================================
+   UPDATE EDITOR VALUES
+===================================== */
+
+function updateEditor(){
+
+const settings =
+pageSettings[
+currentPage
+];
+
+document
+.getElementById(
+"opacitySlider"
+)
+.value =
+settings.opacity * 100;
+
+document
+.getElementById(
+"blurSlider"
+)
+.value =
+settings.blur;
+
+}
+/* =====================================
+   SAVE SYSTEM
+===================================== */
+
+function collectProjectData(){
+
+const data = {
+
+pageSettings,
+
+letter:
+document.getElementById(
+"letterPage"
+)?.value || "",
+
+reasons:
+document.getElementById(
+"reasonsPage"
+)?.value || "",
+
+future:
+document.getElementById(
+"futurePlans"
+)?.value || "",
+
+photos:[],
+
+currentPage,
+
+scrapbookLocked
+
+};
+
+document
+.querySelectorAll(
+".photo-slot"
+)
+.forEach(slot=>{
+
+data.photos.push(
+slot.innerHTML
+);
+
+});
+
+return data;
+
+}
+
+function saveAll(){
+
+const data =
+collectProjectData();
+
+localStorage.setItem(
+"monthsaryProject",
+JSON.stringify(data)
+);
+
+}
+
+/* =====================================
+   RESTORE PROJECT
+===================================== */
+
+function restoreProject(data){
+
+if(!data)
+return;
+
+if(data.pageSettings){
+
+Object.keys(
+data.pageSettings
+).forEach(key=>{
+
+pageSettings[key] =
+data.pageSettings[key];
+
+});
+
+}
+
+const letter =
+document.getElementById(
+"letterPage"
+);
+
+const reasons =
+document.getElementById(
+"reasonsPage"
+);
+
+const future =
+document.getElementById(
+"futurePlans"
+);
+
+if(letter)
+letter.value =
+data.letter || "";
+
+if(reasons)
+reasons.value =
+data.reasons || "";
+
+if(future)
+future.value =
+data.future || "";
+
+if(data.photos){
+
+document
+.querySelectorAll(
+".photo-slot"
+)
+.forEach((slot,index)=>{
+
+slot.innerHTML =
+data.photos[index]
+|| "";
+
+});
+
+}
+
+currentPage =
+data.currentPage || 0;
+
+scrapbookLocked =
+data.scrapbookLocked || false;
+
+showPage(
+currentPage
+);
+
+if(scrapbookLocked){
+
+applyLockMode();
+
+}
+
+}
+
+/* =====================================
+   LOCAL LOAD
+===================================== */
+
+function loadLocalSave(){
+
+const saved =
+localStorage.getItem(
+"monthsaryProject"
+);
+
+if(!saved)
+return false;
+
+try{
+
+restoreProject(
+JSON.parse(saved)
+);
+
+return true;
+
+}
+catch(err){
+
+console.log(err);
+
+return false;
+
+}
+
+}
+
+/* =====================================
+   SAVE BUTTON
+===================================== */
+
+document
+.getElementById(
+"saveBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+saveAll();
+
+alert(
+"❤️ Scrapbook Saved!"
+);
+
+}
+);
+
+/* =====================================
+   AUTO SAVE
+===================================== */
+
+[
+"letterPage",
+"reasonsPage",
+"futurePlans"
+]
+.forEach(id=>{
+
+const el =
+document.getElementById(id);
+
+if(el){
+
+el.addEventListener(
+"input",
+saveAll
+);
+
+}
+
+});
+
+/* =====================================
+   EXPORT JSON
+===================================== */
+
+document
+.getElementById(
+"exportBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+const data =
+collectProjectData();
+
+const blob =
+new Blob(
+[
+JSON.stringify(
+data,
+null,
+2
+)
+],
+{
+type:
+"application/json"
+}
+);
+
+const a =
+document.createElement(
+"a"
+);
+
+a.href =
+URL.createObjectURL(
+blob
+);
+
+a.download =
+"monthsary-project.json";
+
+a.click();
+
+}
+);
+
+/* =====================================
+   IMPORT JSON
+===================================== */
+
+document
+.getElementById(
+"importBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+document
+.getElementById(
+"importFile"
+)
+.click();
+
+}
+);
+
+document
+.getElementById(
+"importFile"
+)
+.addEventListener(
+"change",
+function(e){
+
+const file =
+e.target.files[0];
+
+if(!file)
+return;
+
+const reader =
+new FileReader();
+
+reader.onload =
+function(){
+
+try{
+
+const data =
+JSON.parse(
+reader.result
+);
+
+restoreProject(
+data
+);
+
+saveAll();
+
+alert(
+"❤️ Project Imported!"
+);
+
+}
+catch(err){
+
+alert(
+"Invalid JSON File"
+);
+
+}
+
+};
+
+reader.readAsText(
+file
+);
+
+}
+);
+
+/* =====================================
+   GITHUB AUTO LOAD
+===================================== */
+
+async function loadFromGitHub(){
+
+try{
+
+const response =
+await fetch(
+"monthsary-project.json"
+);
+
+if(
+!response.ok
+)
+return false;
+
+const data =
+await response.json();
+
+restoreProject(
+data
+);
+
+return true;
+
+}
+catch(err){
+
+return false;
+
+}
+
+}
+
+/* =====================================
+   FINALIZE MODE
+===================================== */
+
+document
+.getElementById(
+"lockBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+const confirmLock =
+confirm(
+"Finalize scrapbook?"
+);
+
+if(
+!confirmLock
+)
+return;
+
+scrapbookLocked =
+true;
+
+applyLockMode();
+
+saveAll();
+
+alert(
+"🔒 Scrapbook Finalized!"
+);
+
+}
+);
+
+function applyLockMode(){
+
+/* Hide editor */
+
+document
+.getElementById(
+"editorPanel"
+)
+.classList.add(
+"hidden"
+);
+
+document
+.getElementById(
+"editorToggle"
+)
+.style.display =
+"none";
+
+/* Hide save */
+
+document
+.getElementById(
+"saveBtn"
+)
+.style.display =
+"none";
+
+/* Hide finalize */
+
+document
+.getElementById(
+"lockBtn"
+)
+.style.display =
+"none";
+
+/* Hide import */
+
+document
+.getElementById(
+"importBtn"
+)
+.style.display =
+"none";
+
+/* KEEP EXPORT BUTTON */
+
+document
+.getElementById(
+"exportBtn"
+)
+.classList.add(
+"export-alone"
+);
+
+/* Disable text editing */
+
+document
+.querySelectorAll(
+"textarea"
+)
+.forEach(area=>{
+
+area.disabled =
+true;
+
+});
+
+/* Hide photo controls */
+
+document
+.querySelectorAll(
+".photo-controls"
+)
+.forEach(control=>{
+
+control.style.display =
+"none";
+
+});
+
+/* Move navigation */
+
+document
+.getElementById(
+"prevBtn"
+)
+.classList.add(
+"viewer-prev"
+);
+
+document
+.getElementById(
+"nextBtn"
+)
+.classList.add(
+"viewer-next"
+);
+
+}
+
+/* =====================================
+   EDIT MODE
+===================================== */
+
+document
+.getElementById(
+"editMode"
+)
+.addEventListener(
+"change",
+function(){
+
+const enabled =
+this.checked;
+
+document
+.querySelectorAll(
+".photo-controls"
+)
+.forEach(control=>{
+
+control.style.display =
+enabled
+? "flex"
+: "none";
+
+});
+
+document
+.querySelectorAll(
+"textarea"
+)
+.forEach(area=>{
+
+area.disabled =
+!enabled;
+
+});
+
+}
+);
+
+/* =====================================
+   FLOATING HEARTS
+===================================== */
+
+function createHeart(){
+
+const heart =
+document.createElement(
+"div"
+);
+
+heart.className =
+"heart";
+
+const hearts =
+
+[
+"❤️",
+"💕",
+"💖",
+"💘",
+"💗"
+];
+
+heart.innerHTML =
+
+hearts[
+Math.floor(
+Math.random() *
+hearts.length
+)
+];
+
+heart.style.left =
+Math.random()*100
++ "vw";
+
+heart.style.fontSize =
+(
+20 +
+Math.random()*20
+)
++ "px";
+
+heart.style.animationDuration =
+(
+8 +
+Math.random()*6
+)
++ "s";
+
+document.body
+.appendChild(
+heart
+);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},15000);
+
+}
+
+setInterval(
+createHeart,
+1200
+);
+
+/* =====================================
+   INITIALIZE
+===================================== */
+
+async function initialize(){
+
+updateNavButtons();
+
+const localLoaded =
+loadLocalSave();
+
+if(!localLoaded){
+
+await loadFromGitHub();
+
+}
+
+showPage(
+currentPage || 0
+);
+
+}
+
+initialize();
+
+</script>
+
+</body>
+</html>
